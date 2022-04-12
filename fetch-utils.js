@@ -77,6 +77,19 @@ export async function createBirthday(name, month, day, year, zodiac) {
     return checkError(response);
 }
 
+export async function createGiftIdea(gift) {
+    const response = await client
+    .from('gifts')
+    .insert(gift)
+    .match({
+        user_id: gift.user_id,
+        birthday_profile: gift.birthday_profile
+    })
+    .single();
+
+    return checkError(response);
+
+}
 
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
