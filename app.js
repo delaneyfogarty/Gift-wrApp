@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { redirectIfLoggedIn, signInUser, signupUser } from './fetch-utils.js';
 
 const signInForm = document.getElementById('sign-in');
@@ -12,23 +13,23 @@ const signUpPassword = document.getElementById('sign-up-password');
 redirectIfLoggedIn();
 
 signUpForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const user = await signupUser(signUpEmail.value, signUpPassword.value);
+  event.preventDefault();
+  const user = await signupUser(signUpEmail.value, signUpPassword.value);
 
-    if (user) {
-        redirectIfLoggedIn();
-    } else {
-        console.error(user);
-    }
+  if (user) {
+    redirectIfLoggedIn();
+  } else {
+    console.error(user);
+  }
 });
 
 signInForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const user = await signInUser(signInEmail.value, signInPassword.value);
+  event.preventDefault();
+  const user = await signInUser(signInEmail.value, signInPassword.value);
 
-    if (user) {
-        redirectIfLoggedIn();
-    } else {
-        console.error(user);
-    }
+  if (user) {
+    redirectIfLoggedIn();
+  } else {
+    console.error(user);
+  }
 });

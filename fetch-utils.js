@@ -3,54 +3,54 @@ const SUPABASE_URL = 'https://zwaquhawqyttxdrcbhxx.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export function getUser() {
-    return client.auth.session() && client.auth.session().user;
+export function getUser () {
+  return client.auth.session() && client.auth.session().user;
 }
 
-export function checkAuth() {
-    const user = getUser();
+export function checkAuth () {
+  const user = getUser();
 
-    if (!user) location.replace('../');
+  if (!user) location.replace('../');
 }
 
-export function redirectIfLoggedIn() {
-    if (getUser()) {
-        location.replace('./home');
-    }
+export function redirectIfLoggedIn () {
+  if (getUser()) {
+    location.replace('./home');
+  }
 }
 
-export async function signupUser(email, password) {
-    const response = await client.auth.signUp({ email, password });
+export async function signupUser (email, password) {
+  const response = await client.auth.signUp({ email, password });
 
-    return response.user;
+  return response.user;
 }
 
-export async function signInUser(email, password) {
-    const response = await client.auth.signIn({ email, password });
+export async function signInUser (email, password) {
+  const response = await client.auth.signIn({ email, password });
 
-    return response.user;
+  return response.user;
 }
 
-export async function logout() {
-    await client.auth.signOut();
+export async function logout () {
+  await client.auth.signOut();
 
-    return (window.location.href = '../');
+  return (window.location.href = '../');
 }
 
 
-export async function getMonths() {
-    const response = await client
-        .from('months')
-        .select('*,birthdayperson(*),zodiac_sign(*)');
-    return checkError(response);
+export async function getMonths () {
+  const response = await client
+    .from('months')
+    .select('*,birthday_person(*),zodiac_sign(*)');
+  return checkError(response);
 }
 
-export async function zodiacSign() {
-    const response = await client
-        .from('zodiac_sign')
-        .select('*');
+export async function zodiacSign () {
+  const response = await client
+    .from('zodiac_sign')
+    .select('*');
 
-    return checkError(response);
+  return checkError(response);
 }
 
 // export async function birthdayPerson() {
@@ -61,21 +61,21 @@ export async function zodiacSign() {
 //     return checkError(response);
 // }
 
-export async function createBirthday(name, month, day, year, zodiac) {
-    const response = await client
-        .from('birthdayperson')
-        .insert({
-            name: name,
-            month: month,
-            day: day,
-            year: year,
-            zodiac_sign: zodiac,
-        });
+export async function createBirthday (name, month, day, year, zodiac) {
+  const response = await client
+    .from('birthdayperson')
+    .insert({
+      name: name,
+      month: month,
+      day: day,
+      year: year,
+      zodiac_sign: zodiac,
+    });
 
-    return checkError(response);
+  return checkError(response);
 }
 
 
-function checkError({ data, error }) {
-    return error ? console.error(error) : data;
+function checkError ({ data, error }) {
+  return error ? console.error(error) : data;
 }
