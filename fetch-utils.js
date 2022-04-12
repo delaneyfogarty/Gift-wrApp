@@ -55,13 +55,14 @@ export async function zodiacSign() {
     return checkError(response);
 }
 
-// export async function birthdayPerson() {
-//     const response = await client
-//         .from('birthdayperson')
-//         .select('*, month(*), zodiac(*)');
+export async function birthdayPerson(id) {
+    const response = await client
+        .from('birthday_person')
+        .select('*, months(*), zodiac_sign(*)')
+        .match({ id: id });
 
-//     return checkError(response);
-// }
+    return checkError(response);
+}
 
 export async function createBirthday(name, month, day, year, zodiac) {
     const response = await client
@@ -79,15 +80,20 @@ export async function createBirthday(name, month, day, year, zodiac) {
 
 export async function createGiftIdea(gift) {
     const response = await client
-    .from('gifts')
-    .insert(gift)
-    .match({
-        user_id: gift.user_id,
-        birthday_profile: gift.birthday_profile
-    })
-    .single();
+        .from('gifts')
+        .insert(gift)
+        .match({
+            user_id: gift.user_id,
+            birthday_profile: gift.birthday_profile,
+        })
+        .single();
 
     return checkError(response);
+
+}
+
+export async function getAProfile(){
+    
 
 }
 
