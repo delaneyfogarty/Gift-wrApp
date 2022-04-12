@@ -45,6 +45,8 @@ export async function getMonths () {
   return checkError(response);
 }
 
+
+
 export async function zodiacSign () {
   const response = await client
     .from('zodiac_sign')
