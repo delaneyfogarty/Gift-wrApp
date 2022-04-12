@@ -2,7 +2,7 @@ import { getMonths, zodiacSign, createBirthday } from '../fetch-utils.js';
 
 const form = document.querySelector('form');
 const selectEl = document.querySelector('select');
-const zodiacDropdown = document.querySelector('#zodiac-sign');
+const zodiacDropdown = document.getElementById('zodiac-sign');
 
 
 
@@ -24,6 +24,26 @@ window.addEventListener('load', async () => {
         zodiacOption.textContent = zodiac.zodiac;
         zodiacOption.value = zodiac.id;
         zodiacDropdown.append(zodiacOption);
+    
     }
+
+});
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const nameEl = data.get('name');
+    const monthEl = data.get('chosen-month');
+    const dayEl = data.get('day');
+    const birthYearEl = data.get('year');
+    const zodiacSignEl = data.get('zodiac-sign');
+    
+
+    await createBirthday(nameEl, monthEl, dayEl, birthYearEl, zodiacSignEl);
+    
+
+    form.reset();
 
 });
