@@ -1,12 +1,15 @@
 import {
-  createGiftIdea,
-  birthdayPerson,
-  getGift,
+    createGiftIdea,
+    birthdayPerson,
+    getGift,
+    deleteProfile,
+    deleteGiftList,
 } from '../fetch-utils.js';
 
 const form = document.querySelector('form');
 const birthdayPersonProfile = document.querySelector('.top');
 const giftListContainer = document.querySelector('.gift-list');
+const deleteProfileButton = document.querySelector('.delete-profile');
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id'); // THIS ID IS FROM THE URL AKA THE BIRTHDAY PERSONS ID
@@ -14,26 +17,26 @@ const id = params.get('id'); // THIS ID IS FROM THE URL AKA THE BIRTHDAY PERSONS
 
 
 window.addEventListener('load', async () => {
-  await fetchAndDisplayProfileInfo();
-  await fetchAndDisplayGiftList();
+    await fetchAndDisplayProfileInfo();
+    await fetchAndDisplayGiftList();
 
 });
 
 
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const data = new FormData(form);
-  const gift = data.get('gift-input');
+    const data = new FormData(form);
+    const gift = data.get('gift-input');
 
-  await createGiftIdea({
-    gift: gift,
-    birthday_profile: id,
-    user_id: gift.user_id
-  });
-  fetchAndDisplayGiftList();
-  form.reset();
+    await createGiftIdea({
+        gift: gift,
+        birthday_profile: id,
+        user_id: gift.user_id
+    });
+    fetchAndDisplayGiftList();
+    form.reset();
 
 });
 
@@ -43,41 +46,49 @@ form.addEventListener('submit', async (e) => {
 
 
 
-async function fetchAndDisplayProfileInfo () {
+async function fetchAndDisplayProfileInfo() {
 
   //we want to fetch the birthday person's profile info and display it on the page
 
   // for 
-  const person = await birthdayPerson(id);
-  const profileDiv = document.createElement('div');
-  const profilePersonName = document.createElement('p');
-  const zodiacSign = document.createElement('p');
-  const monthEl = document.createElement('p');
-  const dayEl = document.createElement('p');
-  const yearEl = document.createElement('p');
+    const person = await birthdayPerson(id);
+    const profileDiv = document.createElement('div');
+    const profilePersonName = document.createElement('p');
+    const zodiacSign = document.createElement('p');
+    const monthEl = document.createElement('p');
+    const dayEl = document.createElement('p');
+    const yearEl = document.createElement('p');
 
-  profilePersonName.textContent = person.name;
-  zodiacSign.textContent = person.zodiac_sign;
-  monthEl.textContent = person.month;
-  dayEl.textContent = person.day;
-  yearEl.textContent = person.year;
+    profilePersonName.textContent = person.name;
+    zodiacSign.textContent = person.zodiac_sign;
+    monthEl.textContent = person.month;
+    dayEl.textContent = person.day;
+    yearEl.textContent = person.year;
 
-  profileDiv.append(profilePersonName, monthEl, dayEl, yearEl, zodiacSign);
-  birthdayPersonProfile.append(profileDiv);
+    profileDiv.append(profilePersonName, monthEl, dayEl, yearEl, zodiacSign);
+    birthdayPersonProfile.append(profileDiv);
 
-  return birthdayPersonProfile;
+    return birthdayPersonProfile;
 }
 
-async function fetchAndDisplayGiftList () {
-  giftListContainer.textContent = '';
-  const giftList = await getGift(id);
-  for (let item of giftList) {
-    const listDiv = document.createElement('div');
-    listDiv.classList.add('gift-list-text');
+async function fetchAndDisplayGiftList() {
+    giftListContainer.textContent = '';
+    const giftList = await getGift(id);
+    for (let item of giftList) {
+        const listDiv = document.createElement('div');
+        listDiv.classList.add('gift-list-text');
 
-    listDiv.textContent = `${item.gift}`;
+        listDiv.textContent = `${item.gift}`;
 
-    giftListContainer.append(listDiv);
-  }
+        giftListContainer.append(listDiv);
+    }
 
 }
+
+deleteProfileButton.addEventListener('click', async () => {
+    await deleteGiftList(id);
+    await deleteProfile(id);
+    window.location.href = '../home/';
+
+
+});

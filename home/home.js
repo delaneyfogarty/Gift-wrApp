@@ -6,6 +6,7 @@ const addABirthdayButton = document.querySelector('.create-person-button');
 
 
 window.addEventListener('load', async () => {
+
     const months = await getMonths();
   //const zodiacSigns = await zodiacSign();
 
