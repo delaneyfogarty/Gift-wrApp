@@ -59,7 +59,8 @@ export async function birthdayPerson(id) {
     const response = await client
         .from('birthday_person')
         .select('*, months(*), zodiac_sign(*)')
-        .match({ id: id });
+        .match({ id: id }) 
+        .single();
 
     return checkError(response);
 }
@@ -93,7 +94,7 @@ export async function createGiftIdea(gift) {
 }
 
 export async function getAProfile(){
-    
+
 
 }
 

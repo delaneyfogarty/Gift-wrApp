@@ -39,10 +39,8 @@ async function fetchAndDisplayProfileInfo() {
 //we want to fetch the birthday person's profile info and display it on the page
 
 // for 
-
-
     const person = await birthdayPerson(id);  
-
+    console.log(person);
     const profileDiv = document.createElement('div');
     const profilePersonName = document.createElement('p');
     const zodiacSign = document.createElement('p');
@@ -60,8 +58,5 @@ async function fetchAndDisplayProfileInfo() {
     birthdayPersonProfile.append(profileDiv);
    
     return birthdayPersonProfile;
-
-
-
 }
 

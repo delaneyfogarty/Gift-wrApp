@@ -1,4 +1,4 @@
-import { getMonths } from '../fetch-utils.js';
+import { getMonths, logout } from '../fetch-utils.js';
 
 const birthMonthDiv = document.querySelector('.birthday-month-divs');
 const addABirthdayButton = document.querySelector('.create-person-button');
@@ -36,4 +36,11 @@ window.addEventListener('load', async () => {
 
 addABirthdayButton.addEventListener('click', () => {
     window.location.href = '../create';
+});
+
+
+const logoutButton = document.getElementById('logout');
+
+logoutButton.addEventListener('click', () => {
+    logout();
 });
