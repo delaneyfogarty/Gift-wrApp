@@ -3,101 +3,105 @@ const SUPABASE_URL = 'https://zwaquhawqyttxdrcbhxx.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export function getUser() {
-    return client.auth.session() && client.auth.session().user;
+export function getUser () {
+  return client.auth.session() && client.auth.session().user;
 }
 
-export function checkAuth() {
-    const user = getUser();
+export function checkAuth () {
+  const user = getUser();
 
-    if (!user) location.replace('../');
+  if (!user) location.replace('../');
 }
 
-export function redirectIfLoggedIn() {
-    if (getUser()) {
-        location.replace('./home');
-    }
+export function redirectIfLoggedIn () {
+  if (getUser()) {
+    location.replace('./home');
+  }
 }
 
-export async function signupUser(email, password) {
-    const response = await client.auth.signUp({ email, password });
+export async function signupUser (email, password) {
+  const response = await client.auth.signUp({ email, password });
 
-    return response.user;
+  return response.user;
 }
 
-export async function signInUser(email, password) {
-    const response = await client.auth.signIn({ email, password });
+export async function signInUser (email, password) {
+  const response = await client.auth.signIn({ email, password });
 
-    return response.user;
+  return response.user;
 }
 
-export async function logout() {
-    await client.auth.signOut();
+export async function logout () {
+  await client.auth.signOut();
 
-    return (window.location.href = '../');
-}
-
-
-export async function getMonths() {
-    const response = await client
-        .from('months')
-        .select('*,birthday_person(*),zodiac_sign(*)');
-    return checkError(response);
+  return (window.location.href = '../');
 }
 
 
-
-export async function zodiacSign() {
-    const response = await client
-        .from('zodiac_sign')
-        .select('*');
-
-    return checkError(response);
+export async function getMonths () {
+  const response = await client
+    .from('months')
+    .select('*,birthday_person(*),zodiac_sign(*)');
+  return checkError(response);
 }
 
-export async function birthdayPerson(id) {
-    const response = await client
-        .from('birthday_person')
-        .select('*, months(*), zodiac_sign(*)')
-        .match({ id: id }) 
-        .single();
 
-    return checkError(response);
+
+export async function zodiacSign () {
+  const response = await client
+    .from('zodiac_sign')
+    .select('*');
+
+  return checkError(response);
 }
 
-export async function createBirthday(name, month, day, year, zodiac) {
-    const response = await client
-        .from('birthday_person')
-        .insert({
-            name: name,
-            month: month,
-            day: day,
-            year: year,
-            zodiac_sign: zodiac,
-        });
+export async function birthdayPerson (id) {
+  const response = await client
+    .from('birthday_person')
+    .select('*, months(*), zodiac_sign(*)')
+    .match({ id: id })
+    .single();
 
-    return checkError(response);
+  return checkError(response);
 }
 
-export async function createGiftIdea(gift) {
-    const response = await client
-        .from('gifts')
-        .insert(gift)
-        .match({
-            user_id: gift.user_id,
-            birthday_profile: gift.birthday_profile,
-        })
-        .single();
+export async function createBirthday (name, month, day, year, zodiac) {
+  const response = await client
+    .from('birthday_person')
+    .insert({
+      name: name,
+      month: month,
+      day: day,
+      year: year,
+      zodiac_sign: zodiac,
+    });
 
-    return checkError(response);
+  return checkError(response);
+}
+
+export async function createGiftIdea (gift) {
+  const response = await client
+    .from('gifts')
+    .insert(gift)
+    .match({
+      user_id: gift.user_id,
+      birthday_profile: gift.birthday_profile,
+    })
+    .single();
+
+  return checkError(response);
 
 }
 
-export async function getAProfile(){
+export async function getGiftList (birthdayProfile) {
+  const response = await client
+    .from('gifts')
+    .select('*, birthday_person:user_id (*)')
+    .match({ birthday_profile: birthdayProfile });
 
-
+  return checkError(response);
 }
 
-function checkError({ data, error }) {
-    return error ? console.error(error) : data;
+function checkError ({ data, error }) {
+  return error ? console.error(error) : data;
 }
