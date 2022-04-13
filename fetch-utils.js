@@ -84,7 +84,6 @@ export async function createGiftIdea (gift) {
     .from('gifts')
     .insert(gift)
     .match({
-      user_id: gift.user_id,
       birthday_profile: gift.birthday_profile,
     })
     .single();
@@ -93,11 +92,20 @@ export async function createGiftIdea (gift) {
 
 }
 
-export async function getGiftList (birthdayProfile) {
+//export async function getGiftList (birthdayProfile) {
+//const response = await client
+//.from('gifts')
+//.select('*, birthday_person:user_id (*)')
+//.match({ birthday_profile: birthdayProfile });
+
+//return checkError(response);
+//}
+
+export async function getGift (id) {
   const response = await client
     .from('gifts')
-    .select('*, birthday_person:user_id (*)')
-    .match({ birthday_profile: birthdayProfile });
+    .select('*')
+    .match({ birthday_profile: id });
 
   return checkError(response);
 }

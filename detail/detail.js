@@ -1,11 +1,12 @@
 import {
   createGiftIdea,
   birthdayPerson,
-  getGiftList,
+  getGift,
 } from '../fetch-utils.js';
 
 const form = document.querySelector('form');
 const birthdayPersonProfile = document.querySelector('.top');
+const giftListContainer = document.querySelector('.gift-list');
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id'); // THIS ID IS FROM THE URL AKA THE BIRTHDAY PERSONS ID
@@ -14,7 +15,8 @@ const id = params.get('id'); // THIS ID IS FROM THE URL AKA THE BIRTHDAY PERSONS
 
 window.addEventListener('load', async () => {
   await fetchAndDisplayProfileInfo();
-  await 
+  await fetchAndDisplayGiftList();
+
 });
 
 
@@ -26,9 +28,11 @@ form.addEventListener('submit', async (e) => {
   const gift = data.get('gift-input');
 
   await createGiftIdea({
-    gift: gift
+    gift: gift,
+    birthday_profile: id,
+    user_id: gift.user_id
   });
-
+  fetchAndDisplayGiftList();
   form.reset();
 
 });
@@ -45,7 +49,6 @@ async function fetchAndDisplayProfileInfo () {
 
   // for 
   const person = await birthdayPerson(id);
-  console.log(person);
   const profileDiv = document.createElement('div');
   const profilePersonName = document.createElement('p');
   const zodiacSign = document.createElement('p');
@@ -66,6 +69,15 @@ async function fetchAndDisplayProfileInfo () {
 }
 
 async function fetchAndDisplayGiftList () {
+  giftListContainer.textContent = '';
+  const giftList = await getGift(id);
+  for (let item of giftList) {
+    const listDiv = document.createElement('div');
+    listDiv.classList.add('gift-list-text');
+
+    listDiv.textContent = `${item.gift}`;
+
+    giftListContainer.append(listDiv);
+  }
 
 }
-
