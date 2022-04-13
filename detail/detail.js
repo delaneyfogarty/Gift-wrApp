@@ -4,7 +4,9 @@ import {
     getGift,
     deleteProfile,
     deleteGiftList,
+    updateGift,
 } from '../fetch-utils.js';
+import { renderGiftItem } from '../render-utils.js';
 
 const form = document.querySelector('form');
 const birthdayPersonProfile = document.querySelector('.top');
@@ -50,7 +52,7 @@ async function fetchAndDisplayProfileInfo() {
 
   //we want to fetch the birthday person's profile info and display it on the page
 
-  // for 
+  // for
     const person = await birthdayPerson(id);
     const profileDiv = document.createElement('div');
     const profilePersonName = document.createElement('p');
@@ -75,20 +77,25 @@ async function fetchAndDisplayGiftList() {
     giftListContainer.textContent = '';
     const giftList = await getGift(id);
     for (let item of giftList) {
-        const listDiv = document.createElement('div');
-        listDiv.classList.add('gift-list-text');
+        const giftItemDiv = renderGiftItem(item);
+        // listDiv.classList.add('gift-list-text');
 
-        listDiv.textContent = `${item.gift}`;
+        // listDiv.textContent = `${item.gift}`;
 
-        giftListContainer.append(listDiv);
+        if (item.is_complete === false) {
+            giftItemDiv.addEventListener('click', async () => {
+                // listDiv.classList.add('is-complete');
+                await updateGift(item.id);
+                fetchAndDisplayGiftList();
+            });
+        }
+        giftListContainer.append(giftItemDiv);
     }
-
 }
 
 deleteProfileButton.addEventListener('click', async () => {
     await deleteGiftList(id);
     await deleteProfile(id);
     window.location.href = '../home/';
-
 
 });

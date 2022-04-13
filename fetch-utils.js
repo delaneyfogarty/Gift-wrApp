@@ -129,6 +129,15 @@ export async function deleteGiftList(id) {
 
 }
 
+export async function updateGift(id) {
+    const response = await client
+    .from('gifts')
+    .update({ is_complete: true })
+    .match({ id });
+
+    return checkError(response);
+}
+
 
 function checkError({ data, error }) {
     return error ? console.error(error) : data;

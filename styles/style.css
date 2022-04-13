@@ -12,12 +12,12 @@ body {
     --color3: hsla(315, 37%, 86%, 1);
     --color4: hsla(45, 73%, 98%, 1);
     --color5: hsla(224, 40%, 79%, 1); */
-    
+
     --header-height: 80px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
-    
+
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--color2);
 }
@@ -73,7 +73,7 @@ header img {
 p {
     margin: var(--gutter);
 }
-  
+
 footer {
     position: fixed;
     width: 100%;
@@ -85,7 +85,7 @@ footer {
     box-shadow: var(--shadow);
 }
 
-  
+
   @keyframes pulse {
     20% {
       transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
@@ -128,6 +128,10 @@ footer {
 
 .auth-container button {
     margin: 10px;
+}
+
+.is-complete {
+    text-decoration: line-through;
 }
 
 
