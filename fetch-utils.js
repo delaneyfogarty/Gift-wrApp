@@ -87,6 +87,7 @@ export async function createGiftIdea(gift) {
             birthday_profile: gift.birthday_profile,
         })
         .single();
+        // .order('id', { descending: false });
 
     return checkError(response);
 
@@ -133,7 +134,8 @@ export async function updateGift(id) {
     const response = await client
     .from('gifts')
     .update({ is_complete: true })
-    .match({ id });
+    .match({ id })
+    .order('id', { ascending: false });
 
     return checkError(response);
 }

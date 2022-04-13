@@ -75,16 +75,17 @@ async function fetchAndDisplayProfileInfo() {
 
 async function fetchAndDisplayGiftList() {
     giftListContainer.textContent = '';
+
+
     const giftList = await getGift(id);
+
+
     for (let item of giftList) {
         const giftItemDiv = renderGiftItem(item);
-        // listDiv.classList.add('gift-list-text');
 
-        // listDiv.textContent = `${item.gift}`;
 
         if (item.is_complete === false) {
             giftItemDiv.addEventListener('click', async () => {
-                // listDiv.classList.add('is-complete');
                 await updateGift(item.id);
                 fetchAndDisplayGiftList();
             });
