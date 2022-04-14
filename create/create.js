@@ -1,10 +1,14 @@
-import { getMonths, zodiacSign, createBirthday } from '../fetch-utils.js';
+import { getMonths, zodiacSign, createBirthday, logout } from '../fetch-utils.js';
 
 const form = document.querySelector('form');
 const selectEl = document.querySelector('select');
 const zodiacDropdown = document.getElementById('zodiac-sign');
 
+const logoutButton = document.querySelector('.logout-button');
 
+logoutButton.addEventListener('click', () => {
+    logout();
+});
 
 window.addEventListener('load', async () => {
 
@@ -45,5 +49,7 @@ form.addEventListener('submit', async (e) => {
     
 
     form.reset();
+
+    window.location.href = '../home';
 
 });
