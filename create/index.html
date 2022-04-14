@@ -2,59 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/home.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <title>Document</title>
 </head>
 
 <body>
-    <header>
-        <div class="gutter-right logo">
-            <!-- <img src="../assets/big-logo.png" /> -->
-        </div>
-    </header>
-    <a href="../home/">Home</a>    
-    <button id="logout">Logout</button>
-    <main>
-        <h1>Create Birthday Profile!</h1>
+  <header>
+    <div class="gutter-right logo">
+      <!-- <img src="../assets/big-logo.png" /> -->
+    </div>
+  </header>
+  <a href="../home/">Home</a>
+  <button id="logout">Logout</button>
+  <main>
+    <h1>Create Birthday Profile!</h1>
 
-        <form>
-            <label>Name:
-                <input name="name" />
-            </label>
+    <form>
+      <label>Name:
+        <input name="name" />
+      </label>
 
-            <select name="chosen-month">
+      <select name="chosen-month">
 
-            </select>
+      </select>
 
-            <label>Day: 
-                <input name="day" />
-            </label>
+      <label>Day:
+        <input name="day" />
+      </label>
 
-            <label>Year: 
-                <input name="year" />
-            </label>
+      <label>Year:
+        <input name="year" />
+      </label>
 
-            <label>Zodiac Sign: 
-                <select id="zodiac-sign" name="zodiac-sign">
+      <label>Zodiac Sign:
+        <select id="zodiac-sign" name="zodiac-sign">
 
-                </select>
-            </label>
+        </select>
+      </label>
 
-            <button class="create-person-button">Add Birthday Profile</button>
+      <button class="create-person-button">Add Birthday Profile</button>
 
-        </form>
-    </main>
-    <footer>
-        <!-- <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div> -->
-    </footer>
-    <script type="module" src="./create.js"></script>
+    </form>
+  </main>
+  <footer>
+    <!-- <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div> -->
+  </footer>
+  <script type="module" src="./create.js"></script>
 </body>
 
 </html>
