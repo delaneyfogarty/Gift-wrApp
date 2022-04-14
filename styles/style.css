@@ -1,182 +1,330 @@
-
 body {
-    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
-    /* --color1: hsla(349, 69%, 76%, 1);
+  /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
+  /* --color1: hsla(349, 69%, 76%, 1);
     --color2: hsla(207, 67%, 44%, 1);
     --color3: hsla(200, 61%, 56%, 1);
     --color4: hsla(187, 41%, 94%, 1);
     --color5: hsla(170, 28%, 95%, 1); */
 
-    /* --color1: hsla(45, 86%, 83%, 1);
+  /* --color1: hsla(45, 86%, 83%, 1);
     --color2: hsla(135, 65%, 98%, 1);
     --color3: hsla(315, 37%, 86%, 1);
     --color4: hsla(45, 73%, 98%, 1);
     --color5: hsla(224, 40%, 79%, 1); */
 
-    --header-height: 80px;
-    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
-    --gutter: 30px;
-    --footer-height: 25px;
+  CSS HEX */ --cotton-candy: #fdc5f5ff;
+  --plum-web: #f7aef8ff;
+  --lavender-floral: #b388ebff;
+  --cornflower-blue: #8093f1ff;
+  --sky-blue-crayola: #72ddf7ff;
 
-    font-family: 'Titillium Web', sans-serif;
-    background-color: orange;
+  CSS HSL */ --cotton-candy: hsla(309, 93%, 88%, 1);
+  --plum-web: hsla(299, 84%, 83%, 1);
+  --lavender-floral: hsla(266, 71%, 73%, 1);
+  --cornflower-blue: hsla(230, 80%, 72%, 1);
+  --sky-blue-crayola: hsla(192, 89%, 71%, 1);
+
+  CSS HEX */ --uranian-blue: #a0ddffff;
+  --glaucous: #758ecdff;
+  --lavender-blue: #c1cefeff;
+  --cornflower-blue: #7189ffff;
+  --plump-purple: #624cabff;
+
+  CSS HSL */ --uranian-blue: hsla(201, 100%, 81%, 1);
+  --glaucous: hsla(223, 47%, 63%, 1);
+  --lavender-blue: hsla(227, 97%, 88%, 1);
+  --cornflower-blue: hsla(230, 100%, 72%, 1);
+  --plump-purple: hsla(254, 38%, 48%, 1);
+
+  CSS HEX --amber: #ffbe0bff;
+  --orange-pantone: #fb5607ff;
+  --winter-sky: #ff006eff;
+  --blue-violet: #8338ecff;
+  --azure: #3a86ffff;
+
+  /* CSS HSL */
+  /* --amber: hsla(44, 100%, 52%, 1);
+--orange-pantone: hsla(19, 97%, 51%, 1);
+--winter-sky: hsla(334, 100%, 50%, 1);
+--blue-violet: hsla(265, 83%, 57%, 1);
+--azure: hsla(217, 100%, 61%, 1);*/
+
+  /* CSS HEX */
+  /*--trypan-blue: #471ca8ff;
+--royal-purple: #884ab2ff;
+--yellow-orange-color-wheel: #ff930aff;
+--red-orange-color-wheel: #f24b04ff;
+--rubine-red: #d1105aff;
+
+/* CSS HSL */
+  /*--trypan-blue: hsla(258, 71%, 38%, 1);
+--royal-purple: hsla(276, 41%, 49%, 1);
+--yellow-orange-color-wheel: hsla(34, 100%, 52%, 1);
+--red-orange-color-wheel: hsla(18, 97%, 48%, 1);
+--rubine-red: hsla(337, 86%, 44%, 1);*/
+
+  --header-height: 80px;
+  --shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.45);
+  --gutter: 30px;
+  --footer-height: 25px;
+
+  font-family: 'Titillium Web', sans-serif;
+  background-image: url('../assets/confetti.png');
+  background-color: orange;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: calc(var(--footer-height));
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: calc(var(--footer-height));
 }
 
 section {
-    background-color: var(--color5);
-    width: 1000px;
-    max-width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
+  background-color: var(--color5);
+  width: 1000px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--gutter);
+  padding-bottom: var(--gutter);
+  margin-top: var(--gutter);
+  margin-bottom: var(--gutter);
+  border: solid 2px var(--color1);
+}
+
+.sign-up-header {
+  /*background-color: rgb(167, 80, 167);*/
+  background-color: orange;
 }
 
 header {
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    height: var(--header-height);
-    box-shadow: var(--shadow);
+  display: flex;
+  justify-content: flex-end;
+  background-color: orange;
+  height: var(--header-height);
+  color: white;
 }
+
+#sign-in-email{
+border-radius: 10px;
+background-color: pink;
+}
+#sign-in-password {
+  border-radius: 10px;
+  background-color: plum;
+}
+
+#sign-up-email {
+  border-radius: 10px;
+  background-color: pink;
+}
+
+#sign-up-password {
+  border-radius: 10px;
+  background-color: plum;
+}
+
+
+
+
+
+
 
 h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
-.gutter-right {
-    margin-right: 20px;
+.header-logo {
+  margin-right: 20px;
 }
 
 .main-logo {
-    animation: pulse 5s infinite ease-in-out;
+  animation: pulse 5s infinite ease-in-out;
 }
 
 header img {
-    height: var(--header-height);
+  height: var(--header-height);
 }
 
 p {
-    margin: var(--gutter);
+  margin: var(--gutter);
 }
 
 footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    height: var(--footer-height);
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    box-shadow: var(--shadow);
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: var(--footer-height);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--color3);
+  box-shadow: var(--shadow);
 }
 
 
-  @keyframes pulse {
-    20% {
-      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
-    }
-
-    40% {
-        transform: rotate3d(10, 10, -10, 50deg) scale(1);
-    }
-
-    60% {
-        transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
-      }
-
-    80% {
-        transform: rotate3d(10, 10, 10, 50deg) scale(1);
-    }
-
+@keyframes pulse {
+  20% {
+    transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
   }
 
+  40% {
+    transform: rotate3d(10, 10, -10, 50deg) scale(1);
+  }
+
+  60% {
+    transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
+  }
+
+  80% {
+    transform: rotate3d(10, 10, 10, 50deg) scale(1);
+  }
+
+}
+
 #logout {
-    position: fixed;
-    right: 20px;
-    top: 90px;
+  position: fixed;
+  right: 20px;
+  top: 90px;
 }
 
 .auth-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .auth-container {
-    margin: 10px;
+  margin: 10px;
 }
 
 .auth-container form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-container button {
-    margin: 10px;
+  margin: 10px;
 }
 
 .is-complete {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 
 .auth-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .hailey {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .birthday-month-divs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 20%;
 }
 
 .month {
-    border: 5px solid pink ;
-    border-radius: 30px;
-    padding: 5%;
-    margin: 20px;
-    text-align: center;
+  border: 5px solid pink;
+  border-radius: 30px;
+  padding: 5%;
+  margin: 20px;
+  text-align: center;
+  color:white;
+  font-size: 20px;
 }
 
+.month:hover {
+  transform: rotate(3deg);
+  font-weight: bold;
+  font-size: 30px;
+  background-color: pink;
+}
+
+.month:hover::after {
+  content: "🎂";
+}
 a {
-    padding: 5px;
+  padding: 5px;
 }
 
 .logout-button {
-    height: 30px;
+  height: 30px;
 }
 
 .birthday {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.add-birthday-button {
+  background-color: #B388EB;
+  border: none;
+  height: 70px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  color:white;
+  padding: 15px 32px;
+  cursor:pointer;
+  border-radius: 20px;
+  animation-name: example;
+  animation-duration: 6s;
+}
+
+@keyframes example {
+  from {background-color: #B388EB;}
+  to {background-color: pink;}
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+  40% {transform: translateY(-30px);} 
+  60% {transform: translateY(-15px);} 
+}
+
+.current-date {
+  background-color: #B388EB;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  padding: 1px;
+  padding-bottom: 20px;
+}
+
+.create-person-button {
+  background-color: #B388EB;
+  font-size: 16px;
+  margin: 4px 2px;
+  color:white;
+  padding: 15px 32px;
+  cursor:pointer;
+  border-radius: 12px;
+  border:none;
+}
+
+.try {
+display: flex;
+flex-direction: column;
+margin: 20px;
+}
+
+.home-navigation {
+  display:flex;
+  flex-wrap: wrap;
+  margin: 70px;
+  }
+  
