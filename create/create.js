@@ -1,10 +1,12 @@
-import { getMonths, zodiacSign, createBirthday, logout } from '../fetch-utils.js';
+import { getMonths, zodiacSign, createBirthday, logout, checkAuth } from '../fetch-utils.js';
 
 const form = document.querySelector('form');
 const selectEl = document.querySelector('select');
 const zodiacDropdown = document.getElementById('zodiac-sign');
 
 const logoutButton = document.querySelector('.logout-button');
+
+checkAuth();
 
 logoutButton.addEventListener('click', () => {
     logout();
