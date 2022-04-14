@@ -1,7 +1,7 @@
 import { getMonths, logout, checkAuth, birthdayPerson } from '../fetch-utils.js';
 
 const birthMonthDiv = document.querySelector('.birthday-month-divs');
-const addABirthdayButton = document.querySelector('.create-person-button');
+const addABirthdayButton = document.querySelector('.add-birthday-button');
 const logoutButton = document.querySelector('.logout-button');
 
 checkAuth();

@@ -15,20 +15,26 @@
 
 <body>
   <header class="home-navigation">
-    <a href= "../team-bios/"> Meet the Team</a>
-    <a href="../home/">Home</a>  
-    <button class="logout-button">logout</button>
+    <a class = "try" href="../home/">Home</a>
+    <a class = "try" href= "../team-bios/"> Meet the Team</a>
+    <button class="logout-button" class = "try">logout</button>
   </header>
 
 
   <main>
     <div class="header">
-      <h1>Welcome <span id="username"</span>user!</span></h1>
+      <h1>Welcome <span id="username">user!</h1></span> 
     </div>
 
-    <div class="create-person-button">
-      <button>Add a Birthday!</button>
-    </div>
+   
+      <button class="add-birthday-button">Add a Birthday!</button>
+        <div class="current-date">
+          <p>Today's Date:</p>
+          <script>
+            date = new Date().toLocaleDateString();
+            document.write(date);
+          </script>
+        </div>
     <div class="birthday-month-divs">
 
     </div>

@@ -69,6 +69,7 @@ body {
   --footer-height: 25px;
 
   font-family: 'Titillium Web', sans-serif;
+  background-image: url('../assets/confetti.png');
   background-color: orange;
 }
 
@@ -78,7 +79,6 @@ main {
   justify-content: center;
   align-items: center;
   margin-bottom: calc(var(--footer-height));
-
 }
 
 section {
@@ -98,16 +98,41 @@ section {
 
 .sign-up-header {
   /*background-color: rgb(167, 80, 167);*/
-  background-color: #a0ddffff;
+  background-color: orange;
 }
 
 header {
   display: flex;
   justify-content: flex-end;
-  background-color: var(--color3);
+  background-color: orange;
   height: var(--header-height);
-  box-shadow: var(--shadow);
+  color: white;
 }
+
+#sign-in-email{
+border-radius: 10px;
+background-color: pink;
+}
+#sign-in-password {
+  border-radius: 10px;
+  background-color: plum;
+}
+
+#sign-up-email {
+  border-radius: 10px;
+  background-color: pink;
+}
+
+#sign-up-password {
+  border-radius: 10px;
+  background-color: plum;
+}
+
+
+
+
+
+
 
 h2 {
   font-size: 1.8rem;
@@ -219,8 +244,20 @@ footer {
   padding: 5%;
   margin: 20px;
   text-align: center;
+  color:white;
+  font-size: 20px;
 }
 
+.month:hover {
+  transform: rotate(3deg);
+  font-weight: bold;
+  font-size: 30px;
+  background-color: pink;
+}
+
+.month:hover::after {
+  content: "🎂";
+}
 a {
   padding: 5px;
 }
@@ -235,3 +272,59 @@ a {
   justify-content: flex-start;
   align-items: center;
 }
+
+.add-birthday-button {
+  background-color: #B388EB;
+  border: none;
+  height: 70px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  color:white;
+  padding: 15px 32px;
+  cursor:pointer;
+  border-radius: 20px;
+  animation-name: example;
+  animation-duration: 6s;
+}
+
+@keyframes example {
+  from {background-color: #B388EB;}
+  to {background-color: pink;}
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+  40% {transform: translateY(-30px);} 
+  60% {transform: translateY(-15px);} 
+}
+
+.current-date {
+  background-color: #B388EB;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  padding: 1px;
+  padding-bottom: 20px;
+}
+
+.create-person-button {
+  background-color: #B388EB;
+  font-size: 16px;
+  margin: 4px 2px;
+  color:white;
+  padding: 15px 32px;
+  cursor:pointer;
+  border-radius: 12px;
+  border:none;
+}
+
+.try {
+display: flex;
+flex-direction: column;
+margin: 20px;
+}
+
+.home-navigation {
+  display:flex;
+  flex-wrap: wrap;
+  margin: 70px;
+  }
+  
