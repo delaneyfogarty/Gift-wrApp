@@ -19,7 +19,7 @@ body {
     --footer-height: 25px;
 
     font-family: 'Titillium Web', sans-serif;
-    background-color: var(--color2);
+    background-color: orange;
 }
 
 main {
@@ -28,6 +28,7 @@ main {
     justify-content: center;
     align-items: center;
     margin-bottom: calc(var(--footer-height));
+    
 }
 
 section {
@@ -148,3 +149,18 @@ footer {
     align-items: center;
     flex-direction: column;
 }
+
+.birthday-month-divs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 20%;
+}
+
+.month {
+    border: 5px solid pink ;
+    border-radius: 30px;
+    padding: 5%;
+    margin: 20px;
+    text-align: center;
