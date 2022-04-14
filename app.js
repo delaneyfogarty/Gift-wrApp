@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { redirectIfLoggedIn, signInUser, signupUser } from './fetch-utils.js';
 
 const signInForm = document.getElementById('sign-in');
