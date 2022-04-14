@@ -329,3 +329,26 @@ margin: 20px;
   background-color: #B388EB;
   border-radius: 20px;
 }
+
+.detail-profile-div {
+  background-color: #B388EB;
+  border-radius: 25px;
+  /* padding: 2px; */
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+
+}
+
+.gift-list {
+  background-color: #B388EB;
+  border-radius: 25px;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
+}
+
+.delete-profile {
+  display: flex;
+  justify-content: center;
+}

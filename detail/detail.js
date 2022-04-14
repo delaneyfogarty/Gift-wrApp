@@ -77,6 +77,8 @@ async function fetchAndDisplayProfileInfo() {
     profileDiv.append(profilePersonName, fullBirthdayDiv, zodiacSign);
     birthdayPersonProfile.append(profileDiv);
 
+    profileDiv.classList.add('detail-profile-div');
+
     return birthdayPersonProfile;
 }
 
