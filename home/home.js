@@ -3,10 +3,15 @@ import { getMonths, logout, checkAuth, birthdayPerson } from '../fetch-utils.js'
 const birthMonthDiv = document.querySelector('.birthday-month-divs');
 const addABirthdayButton = document.querySelector('.create-person-button');
 const logoutButton = document.querySelector('.logout-button');
+const currenDateEl= document.querySelector('.current-date');
 
 checkAuth();
 
+
+
+
 window.addEventListener('load', async () => {
+    const 
 
     const months = await getMonths();
   //const zodiacSigns = await zodiacSign();
@@ -35,6 +40,9 @@ window.addEventListener('load', async () => {
             birthdayDiv.classList.add('birthday');
             birthdayDiv.append(birthdayLink, birthdayDate, birthdayYear, birthdaySign);
             monthEl.append(birthdayDiv);
+
+            //birthday.day
+
         }
     }
 
