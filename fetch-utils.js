@@ -132,9 +132,9 @@ export async function deleteGiftList(id) {
 
 export async function updateGift(id) {
     const response = await client
-    .from('gifts')
-    .update({ is_complete: true })
-    .match({ id });
+        .from('gifts')
+        .update({ is_complete: true })
+        .match({ id });
     // .order('is_complete', { ascending: false });
 
     return checkError(response);
