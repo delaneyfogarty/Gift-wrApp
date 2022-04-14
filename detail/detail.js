@@ -66,8 +66,8 @@ async function fetchAndDisplayProfileInfo() {
     const dayEl = document.createElement('p');
     const yearEl = document.createElement('p');
 
-    profilePersonName.textContent = person.name;
-    zodiacSign.textContent = person.zodiac_sign.zodiac;
+    profilePersonName.textContent = 'Name: ' + person.name;
+    zodiacSign.textContent = 'Zodiac' + person.zodiac_sign.zodiac;
     monthEl.textContent = person.month;
     dayEl.textContent = person.day;
     yearEl.textContent = person.year;
