@@ -92,15 +92,6 @@ export async function createGiftIdea (gift) {
 
 }
 
-//export async function getGiftList (birthdayProfile) {
-//const response = await client
-//.from('gifts')
-//.select('*, birthday_person:user_id (*)')
-//.match({ birthday_profile: birthdayProfile });
-
-//return checkError(response);
-//}
-
 export async function getGift (id) {
   const response = await client
     .from('gifts')
