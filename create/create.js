@@ -28,7 +28,6 @@ window.addEventListener('load', async () => {
         zodiacOption.textContent = zodiac.zodiac;
         zodiacOption.value = zodiac.id;
         zodiacDropdown.append(zodiacOption);
-    
     }
 
 });

@@ -58,6 +58,7 @@ async function fetchAndDisplayProfileInfo() {
 
   // for
     const person = await birthdayPerson(id);
+    console.log(person, 'birthdayperson');
     const profileDiv = document.createElement('div');
     const profilePersonName = document.createElement('p');
     const zodiacSign = document.createElement('p');
@@ -66,7 +67,7 @@ async function fetchAndDisplayProfileInfo() {
     const yearEl = document.createElement('p');
 
     profilePersonName.textContent = person.name;
-    zodiacSign.textContent = person.zodiac_sign;
+    zodiacSign.textContent = person.zodiac_sign.zodiac;
     monthEl.textContent = person.month;
     dayEl.textContent = person.day;
     yearEl.textContent = person.year;
