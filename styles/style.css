@@ -136,7 +136,7 @@ footer {
 }
 
 
-.summaries {
+.auth-main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -164,3 +164,19 @@ footer {
     padding: 5%;
     margin: 20px;
     text-align: center;
+}
+
+a {
+    padding: 5px;
+}
+
+.logout-button {
+    height: 30px;
+}
+
+.birthday {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
