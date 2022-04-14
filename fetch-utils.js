@@ -86,8 +86,8 @@ export async function createGiftIdea(gift) {
         .match({
             birthday_profile: gift.birthday_profile,
         })
-        .single();
-        // .order('id', { descending: false });
+        .single()
+        .order('is_complete', { ascending: true });
 
     return checkError(response);
 
@@ -132,10 +132,10 @@ export async function deleteGiftList(id) {
 
 export async function updateGift(id) {
     const response = await client
-    .from('gifts')
-    .update({ is_complete: true })
-    .match({ id })
-    .order('id', { ascending: false });
+        .from('gifts')
+        .update({ is_complete: true })
+        .match({ id });
+    // .order('is_complete', { ascending: false });
 
     return checkError(response);
 }
