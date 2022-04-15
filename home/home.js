@@ -1,7 +1,7 @@
 import { getMonths, logout, checkAuth, birthdayPerson } from '../fetch-utils.js';
 
 const birthMonthDiv = document.querySelector('.birthday-month-divs');
-const addABirthdayButton = document.querySelector('.create-person-button');
+const addABirthdayButton = document.querySelector('.add-birthday-button');
 const logoutButton = document.querySelector('.logout-button');
 
 checkAuth();
@@ -24,14 +24,16 @@ window.addEventListener('load', async () => {
             const birthdayDiv = document.createElement('div');
             const birthdayLink = document.createElement('a');
             const birthdayDate = document.createElement('p');
+            const birthdayYear = document.createElement('p');
             const birthdaySign = document.createElement('p');
         
             birthdayDate.textContent = birthday.month + '/' + birthday.day;
             birthdayLink.textContent = birthday.name;
+            birthdayYear.textContent = birthday.year;
             birthdaySign.textContent = balloon.zodiac_sign.zodiac;
             birthdayLink.href = `../detail/?id=${birthday.id}`;
             birthdayDiv.classList.add('birthday');
-            birthdayDiv.append(birthdayLink, birthdayDate, birthdaySign);
+            birthdayDiv.append(birthdayLink, birthdayDate, birthdayYear, birthdaySign);
             monthEl.append(birthdayDiv);
         }
     }
