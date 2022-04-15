@@ -70,7 +70,8 @@ body {
 
   font-family: 'Titillium Web', sans-serif;
   background-image: url('../assets/confetti.png');
-  background-color: orange;
+  background-color: black;
+  color: white;
 }
 
 main {
@@ -96,17 +97,21 @@ section {
   border: solid 2px var(--color1);
 }
 
+.navi-bar {
+  display: flex;
+}
 .sign-up-header {
   /*background-color: rgb(167, 80, 167);*/
-  background-color: orange;
+  background-color: black;
 }
 
 header {
   display: flex;
   justify-content: flex-end;
-  background-color: orange;
+  background-color: black;
   height: var(--header-height);
   color: white;
+  margin: none;
 }
 
 #sign-in-email{
@@ -142,9 +147,9 @@ h2 {
   animation: pulse 5s infinite ease-in-out;
 }
 
-header img {
+/* header img {
   height: var(--header-height);
-} 
+}  */
 
 p {
   margin: var(--gutter);
@@ -242,10 +247,12 @@ footer {
   text-align: center;
   color:white;
   font-size: 20px;
+  justify-content: space-between;
+  
 }
 
  .month:hover {
-  transform: rotate(3deg);
+  transform: rotate(1deg);
   font-weight: bold;
   font-size: 30px;
   background-color: pink;
@@ -268,6 +275,10 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  background-color: orange;
+  border-radius: 35px;
+  margin: 15px;
+  opacity: 90%;
 }
 
 .add-birthday-button {
@@ -319,12 +330,29 @@ flex-direction: column;
 margin: 20px;
 }
 
-.home-navigation {
+/* .home-navigation {
   display:flex;
   flex-wrap: wrap;
   margin: 70px;
-  }
+  } */
   
+  .home-navigation {
+    display:grid;
+    grid-template-columns: 70%, 30%;
+    margin: 70px;
+    justify-content: center;
+    }
+
+  .header-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+.logo-image {
+  height: 150px;
+}
+
+
 .birthday:hover {
   background-color: #B388EB;
   border-radius: 20px;
