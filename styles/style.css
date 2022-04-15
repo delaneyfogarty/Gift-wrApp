@@ -63,14 +63,15 @@ body {
 --red-orange-color-wheel: hsla(18, 97%, 48%, 1);
 --rubine-red: hsla(337, 86%, 44%, 1);*/
 
-  --header-height: 80px;
+  --header-height: 200px;
   --shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.45);
   --gutter: 30px;
   --footer-height: 25px;
 
   font-family: 'Titillium Web', sans-serif;
   background-image: url('../assets/confetti.png');
-  background-color: orange;
+  background-color: black;
+  color: white;
 }
 
 main {
@@ -96,17 +97,22 @@ section {
   border: solid 2px var(--color1);
 }
 
+.navi-bar {
+  display: flex;
+  justify-content: center;
+}
 .sign-up-header {
   /*background-color: rgb(167, 80, 167);*/
-  background-color: orange;
+  background-color: black;
 }
 
 header {
   display: flex;
   justify-content: flex-end;
-  background-color: orange;
+  background-color: black;
   height: var(--header-height);
   color: white;
+  margin: none;
 }
 
 #sign-in-email{
@@ -128,6 +134,12 @@ background-color: pink;
   background-color: plum;
 }
 
+.create-birthday-header {
+  background-color: #B388EB;
+  border-radius: 15px;
+  padding: 5px;
+
+}
 
 h2 {
   font-size: 1.8rem;
@@ -142,9 +154,9 @@ h2 {
   animation: pulse 5s infinite ease-in-out;
 }
 
-header img {
+/* header img {
   height: var(--header-height);
-} 
+}  */
 
 p {
   margin: var(--gutter);
@@ -242,10 +254,12 @@ footer {
   text-align: center;
   color:white;
   font-size: 20px;
+  justify-content: space-between;
+  
 }
 
  .month:hover {
-  transform: rotate(3deg);
+  transform: rotate(1deg);
   font-weight: bold;
   font-size: 30px;
   background-color: pink;
@@ -260,7 +274,12 @@ a {
 }
 
 .logout-button {
+  display: flex;
+  justify-content: flex-end;
   height: 30px;
+  background-color: black;
+  color: white;
+  border: none;
 }
 
 .birthday {
@@ -268,7 +287,10 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  background-color: orange;
+  border-radius: 35px;
   margin: 15px;
+  opacity: 90%;
 }
 
 .add-birthday-button {
@@ -320,13 +342,54 @@ flex-direction: column;
 margin: 20px;
 }
 
-.home-navigation {
+/* .home-navigation {
   display:flex;
   flex-wrap: wrap;
   margin: 70px;
-  }
+  } */
   
+  .home-navigation {
+    display:grid;
+    grid-template-columns: 70%, 30%;
+    margin: 70px;
+    justify-content: center;
+    background-color: transparent;
+    }
+
+  .header-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+.logo-image {
+  height: 160px;
+}
+
+
 .birthday:hover {
   background-color: #B388EB;
   border-radius: 20px;
+}
+
+.detail-profile-div {
+  background-color: #B388EB;
+  border-radius: 25px;
+  /* padding: 2px; */
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+
+}
+
+.gift-list {
+  background-color: #B388EB;
+  border-radius: 25px;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
+}
+
+.delete-profile {
+  display: flex;
+  justify-content: center;
 }

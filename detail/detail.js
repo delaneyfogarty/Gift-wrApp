@@ -65,15 +65,19 @@ async function fetchAndDisplayProfileInfo() {
     const monthEl = document.createElement('p');
     const dayEl = document.createElement('p');
     const yearEl = document.createElement('p');
+    const fullBirthdayDiv = document.createElement('p');
 
-    profilePersonName.textContent = person.name;
-    zodiacSign.textContent = person.zodiac_sign.zodiac;
+    profilePersonName.textContent = 'Name: ' + person.name;
+    zodiacSign.textContent = 'Zodiac: ' + person.zodiac_sign.zodiac;
     monthEl.textContent = person.month;
     dayEl.textContent = person.day;
-    yearEl.textContent = person.year;
+    fullBirthdayDiv.textContent = 'Birthdate: ' + person.month + '/' + person.day + '/' + person.year;
+    yearEl.textContent = 'Year: ' + person.year;
 
-    profileDiv.append(profilePersonName, monthEl, dayEl, yearEl, zodiacSign);
+    profileDiv.append(profilePersonName, fullBirthdayDiv, zodiacSign);
     birthdayPersonProfile.append(profileDiv);
+
+    profileDiv.classList.add('detail-profile-div');
 
     return birthdayPersonProfile;
 }
