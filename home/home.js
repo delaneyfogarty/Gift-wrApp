@@ -1,4 +1,4 @@
-import { getMonths, logout, checkAuth, birthdayPerson } from '../fetch-utils.js';
+import { getMonths, logout, checkAuth, getBirthdayPerson } from '../fetch-utils.js';
 
 const birthMonthDiv = document.querySelector('.birthday-month-divs');
 const addABirthdayButton = document.querySelector('.add-birthday-button');
@@ -20,14 +20,14 @@ window.addEventListener('load', async () => {
         birthMonthDiv.append(monthEl);
 
         for (let birthday of eachMonth.birthday_person) {
-            const balloon = await birthdayPerson(birthday.id);
+            const balloon = await getBirthdayPerson(birthday.id);
             const birthdayDiv = document.createElement('div');
             const birthdayLink = document.createElement('a');
             const birthdayDate = document.createElement('p');
             const birthdayYear = document.createElement('p');
             const birthdaySign = document.createElement('p');
         
-            birthdayDate.textContent = birthday.month + '/' + birthday.day;
+            birthdayDate.textContent = `${birthday.month}/${birthday.day}`;
             birthdayLink.textContent = birthday.name;
             birthdayYear.textContent = birthday.year;
             birthdaySign.textContent = balloon.zodiac_sign.zodiac;

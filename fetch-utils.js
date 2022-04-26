@@ -47,7 +47,7 @@ export async function getMonths() {
 
 
 
-export async function zodiacSign() {
+export async function getZodiacSigns() {
     const response = await client
         .from('zodiac_sign')
         .select('*');
@@ -55,7 +55,7 @@ export async function zodiacSign() {
     return checkError(response);
 }
 
-export async function birthdayPerson(id) {
+export async function getBirthdayPerson(id) {
     const response = await client
         .from('birthday_person')
         .select('*, months(*), zodiac_sign(*)')
