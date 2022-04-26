@@ -1,6 +1,6 @@
 import {
     createGiftIdea,
-    birthdayPerson,
+    getBirthdayPerson,
     getGift,
     deleteProfile,
     deleteGiftList,
@@ -11,7 +11,7 @@ import {
 import { renderGiftItem } from '../render-utils.js';
 
 const form = document.querySelector('form');
-const birthdayPersonProfile = document.querySelector('.top');
+const getBirthdayPersonProfileEl = document.querySelector('.top');
 const giftListContainer = document.querySelector('.gift-list');
 const deleteProfileButton = document.querySelector('.delete-profile');
 const logoutButton = document.querySelector('.logout-button');
@@ -21,8 +21,7 @@ const id = params.get('id'); // THIS ID IS FROM THE URL AKA THE BIRTHDAY PERSONS
 checkAuth();
 
 window.addEventListener('load', async () => {
-    await fetchAndDisplayProfileInfo();
-    await fetchAndDisplayGiftList();
+    await Promise.all([fetchAndDisplayProfileInfo(), fetchAndDisplayGiftList()]);
 
 });
 
@@ -38,7 +37,7 @@ form.addEventListener('submit', async (e) => {
     const gift = data.get('gift-input');
 
     await createGiftIdea({
-        gift: gift,
+        gift, // if the key and the name of the variable are the same, you can do the shorthand like this
         birthday_profile: id,
         user_id: gift.user_id
     });
@@ -57,8 +56,14 @@ async function fetchAndDisplayProfileInfo() {
 
   //we want to fetch the birthday person's profile info and display it on the page
 
-  // for
-    const person = await birthdayPerson(id);
+  // here is how you can "destrcructure" the properties of the person so you don't have to write `person` over and over
+    const {
+        name,
+        zodiac_sign,
+        month,
+        year,
+        day,
+    } = await getBirthdayPerson(id);
     const profileDiv = document.createElement('div');
     const profilePersonName = document.createElement('p');
     const zodiacSign = document.createElement('p');
@@ -67,19 +72,19 @@ async function fetchAndDisplayProfileInfo() {
     const yearEl = document.createElement('p');
     const fullBirthdayDiv = document.createElement('p');
 
-    profilePersonName.textContent = 'Name: ' + person.name;
-    zodiacSign.textContent = 'Zodiac: ' + person.zodiac_sign.zodiac;
-    monthEl.textContent = person.month;
-    dayEl.textContent = person.day;
-    fullBirthdayDiv.textContent = 'Birthdate: ' + person.month + '/' + person.day + '/' + person.year;
-    yearEl.textContent = 'Year: ' + person.year;
+    profilePersonName.textContent = `Name: ${name}`;
+    zodiacSign.textContent = `Zodiac: ${zodiac_sign.zodiac}`;
+    monthEl.textContent = month;
+    dayEl.textContent = day;
+    fullBirthdayDiv.textContent = `Birthdate: ${month}/${day}/${year}`;
+    yearEl.textContent = `Year: ${year}`;
 
     profileDiv.append(profilePersonName, fullBirthdayDiv, zodiacSign);
-    birthdayPersonProfile.append(profileDiv);
+    getBirthdayPersonProfileEl.append(profileDiv);
 
     profileDiv.classList.add('detail-profile-div');
 
-    return birthdayPersonProfile;
+    return getBirthdayPersonProfileEl;
 }
 
 async function fetchAndDisplayGiftList() {
@@ -93,7 +98,7 @@ async function fetchAndDisplayGiftList() {
         const giftItemDiv = renderGiftItem(item);
 
 
-        if (item.is_complete === false) {
+        if (!item.is_complete) {
             giftItemDiv.addEventListener('click', async () => {
                 await updateGift(item.id);
                 fetchAndDisplayGiftList();
