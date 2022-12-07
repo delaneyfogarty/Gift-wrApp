@@ -1,10 +1,11 @@
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3YXF1aGF3cXl0dHhkcmNiaHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDc1NTE5ODEsImV4cCI6MTk2MzEyNzk4MX0.FnfsYqPR7GPz5COh7itHiDt6as7-F__iU57NyG7IKyE';
+const SUPABASE_KEY =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3YXF1aGF3cXl0dHhkcmNiaHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDc1NTE5ODEsImV4cCI6MTk2MzEyNzk4MX0.FnfsYqPR7GPz5COh7itHiDt6as7-F__iU57NyG7IKyE';
 const SUPABASE_URL = 'https://zwaquhawqyttxdrcbhxx.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export function getUser() {
-    return client.auth.session() && client.auth.session().user;
+    return client.auth.user();
 }
 
 export function checkAuth() {
@@ -37,20 +38,13 @@ export async function logout() {
     return (window.location.href = '../');
 }
 
-
 export async function getMonths() {
-    const response = await client
-        .from('months')
-        .select('*,birthday_person(*),zodiac_sign(*)');
+    const response = await client.from('months').select('*,birthday_person(*),zodiac_sign(*)');
     return checkError(response);
 }
 
-
-
 export async function zodiacSign() {
-    const response = await client
-        .from('zodiac_sign')
-        .select('*');
+    const response = await client.from('zodiac_sign').select('*');
 
     return checkError(response);
 }
@@ -66,15 +60,13 @@ export async function birthdayPerson(id) {
 }
 
 export async function createBirthday(name, month, day, year, zodiac) {
-    const response = await client
-        .from('birthday_person')
-        .insert({
-            name: name,
-            month: month,
-            day: day,
-            year: year,
-            zodiac_sign: zodiac,
-        });
+    const response = await client.from('birthday_person').insert({
+        name: name,
+        month: month,
+        day: day,
+        year: year,
+        zodiac_sign: zodiac,
+    });
 
     return checkError(response);
 }
@@ -90,7 +82,6 @@ export async function createGiftIdea(gift) {
         .order('is_complete', { ascending: true });
 
     return checkError(response);
-
 }
 
 //export async function getGiftList (birthdayProfile) {
@@ -103,43 +94,29 @@ export async function createGiftIdea(gift) {
 //}
 
 export async function getGift(id) {
-    const response = await client
-        .from('gifts')
-        .select('*')
-        .match({ birthday_profile: id });
+    const response = await client.from('gifts').select('*').match({ birthday_profile: id });
 
     return checkError(response);
 }
 
 export async function deleteProfile(id) {
-    const response = await client
-        .from('birthday_person')
-        .delete()
-        .match({ id: id });
+    const response = await client.from('birthday_person').delete().match({ id: id });
 
     return checkError(response);
 }
 
 export async function deleteGiftList(id) {
-    const response = await client
-        .from('gifts')
-        .delete()
-        .match ({ birthday_profile: id });
+    const response = await client.from('gifts').delete().match({ birthday_profile: id });
 
     return checkError(response);
-
 }
 
 export async function updateGift(id) {
-    const response = await client
-        .from('gifts')
-        .update({ is_complete: true })
-        .match({ id });
+    const response = await client.from('gifts').update({ is_complete: true }).match({ id });
     // .order('is_complete', { ascending: false });
 
     return checkError(response);
 }
-
 
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
